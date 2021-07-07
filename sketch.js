@@ -87,7 +87,7 @@ function draw(){
   }
 
   //jump with space
-  if((keyDown("space") || mouse.y>0) && mario.velocityY>0 ){
+  if((keyDown("space") || mouseY>0) && mario.velocityY>0 ){
     mario.velocityY = -10;
     if(jump.isPlaying()){
       jump.stop()
