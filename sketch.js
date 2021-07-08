@@ -27,8 +27,8 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(1530, 700);
-
+  c=createCanvas(1530, 700);
+  c.touchStarted(ak)
   //create background sprite
   bgImage.resize(6000,800) ;bg = createSprite(1530,300,6000,800);
  
@@ -54,6 +54,17 @@ function setup() {
   bricksGroup = new Group();
   coinGroup = new Group();
   obsGroup = new Group();
+
+}
+
+function ak(){
+ if( mario.velocityY>0 ){
+    mario.velocityY = -10;
+    if(jump.isPlaying()){
+      jump.stop()
+    }
+    jump.play()
+  }
 
 }
 
@@ -87,7 +98,7 @@ function draw(){
   }
 
   //jump with space
-  if((keyDown("space") || mouseY>0) && mario.velocityY>0 ){
+  if(keyDown("space") && mario.velocityY>0 ){
     mario.velocityY = -10;
     if(jump.isPlaying()){
       jump.stop()
